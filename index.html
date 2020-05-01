@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khel</title>
+  <script defer type="module" src="./js/app.js"></script>
 </head>
 <body>
   <header>
@@ -11,27 +12,17 @@
   </header>
   <section>
     <button id="genrateRandom">Generate random from each category</button>
-    <div class="filter">
-      <label>
-        Pursuit
-        <input type="checkbox" value="pursuit">
-      </label>
-      <label>
-        Mandal
-        <input type="checkbox" value="mandal">
-      </label>
-      <label>
-        Team
-        <input type="checkbox" value="team">
-      </label>
-      <label>
-        Sittging Down
-        <input type="checkbox" value="sitting down">
-      </label>
-      <label>
-        Dand
-        <input type="checkbox" value="dand">
-      </label>
+    <div id="filter">
+      <label>Pursuit</label>
+      <input type="checkbox" name="type" value="Pursuit">
+      <label>Mandal</label>
+      <input type="checkbox" name="type" value="Mandal">
+      <label>Team</label>
+      <input type="checkbox" name="type" value="Team">
+      <label>Sittging Down</label>
+      <input type="checkbox" name="type" value="Sitting Down">
+      <label>Dand</label>
+      <input type="checkbox" name="type" value="Dand">
     </div>
 
     <div id="khelList">
@@ -40,7 +31,4 @@
 
   </section>
 </body>
-
-<script src="app.js"></script>
-
 </html>
