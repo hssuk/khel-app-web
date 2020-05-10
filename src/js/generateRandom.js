@@ -1,4 +1,4 @@
-export default function generateRandom(arr, n) {
+function generateRandom(arr, n) {
   let result = new Array(n);
   let len = arr.length;
   let taken = new Array(len);
@@ -11,3 +11,5 @@ export default function generateRandom(arr, n) {
 
   return result;
 }
+
+module.exports = generateRandom;
