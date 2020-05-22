@@ -22,7 +22,8 @@
   "homepage": "https://github.com/miteshsevani/khel#readme",
   "devDependencies": {
     "jest": "^26.0.1",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.5"
   },
   "dependencies": {
     "data": "^0.6.1"

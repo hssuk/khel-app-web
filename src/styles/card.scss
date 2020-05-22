@@ -1,0 +1,28 @@
+.card {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-radius: 5px;
+
+  &__khel {
+    &-name {
+      font-weight: 500;
+      padding: 12px;
+    }
+
+    &-meaning {
+      padding: 12px;
+    }
+
+    &-aim {
+      padding: 12px;
+    }
+
+    &-description {
+      padding: 12px;
+    }
+  }
+}

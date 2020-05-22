@@ -4,24 +4,30 @@ import 'regenerator-runtime/runtime';
 export default function khel() {
   const data = require('../data/khel.json');
   const elRandom = document.querySelector("#genrateRandom");
-  const element = document.querySelector('#khelList');
+  const element = document.querySelector('.khel-list');
   let types = Object.getOwnPropertyNames(data);
+
+  function buildArray(data) {
+    return `<div class="card">
+      <div class="card__khel-name">${data.name}</div>
+      <div class="card__khel-meaning">Meaning: ${data.meaning}</div>
+      <div class="card__khel-aim">Aim: ${data.aim}</div>
+      <div class="card__khel-description">${data.description}</div>
+    </div>`;
+  }
 
   function getAll() {
     let khelArr = [];
+
     types.map(type => {
       khelArr.push(
         `<h3>${type}</h3>`
       );
-
-      const khelLength = data[type].khel.length;
-      for(let i=0;i<khelLength;i++) {
+      data[type].khel.map(khel => {
         khelArr.push(
-          `<div class="khel">
-            ${data[type].khel[i].name}
-          </div>`
-        )
-      }
+          buildArray(khel)
+        );
+      });
     });
 
     displayKhel(khelArr);
@@ -29,19 +35,19 @@ export default function khel() {
 
   function getRandom() {
     let khelArr = [];
+
     types.map(type => {
       khelArr.push(
         `<h3>${type}</h3>`
-      )
+      );
 
-      let khelRandom = generateRandom(data[type].khel,2);
-      for(let i=0;i<khelRandom.length;i++) {
+      const khelRandom = generateRandom(data[type].khel,2);
+
+      khelRandom.map(khel => {
         khelArr.push(
-          `<div class="khel">
-            ${khelRandom[i].name}
-          </div>`
-        )
-      }
+          buildArray(khel)
+        );
+      });
     });
 
     displayKhel(khelArr);
@@ -51,15 +57,15 @@ export default function khel() {
     let khelArr = [];
     types = arrFilter;
     types.map(type => {
-      const khelLength = data[type].khel.length;
-      khelArr.push(`<h3>${type}</h3>`);
-      for(let i=0;i<khelLength;i++) {
+      khelArr.push(
+        `<h3>${type}</h3>`
+      );
+
+      data[type].khel.map(khel => {
         khelArr.push(
-          `<div class="khel">
-            ${data[type].khel[i].name}
-          </div>`
-        )
-      }
+          buildArray(khel)
+        );
+      });
     });
 
     displayKhel(khelArr);
@@ -78,7 +84,7 @@ export default function khel() {
   for(let i=0; i < elFilter.length; i++) {
     elFilter[i].addEventListener('click', function(e) {
       if(e.target.checked) {
-        arrFilter.push(e.target.value)
+        arrFilter.push(e.target.value);
       }
       if(!e.target.checked) {
         if(arrFilter.indexOf(e.target.value) === 0) {
