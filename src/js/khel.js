@@ -1,19 +1,58 @@
 import generateRandom from './generateRandom.js';
 import 'regenerator-runtime/runtime';
 
+
 export default function khel() {
   const data = require('../data/khel.json');
+  const elementKL = document.querySelector('.khel-list');
   const elRandom = document.querySelector("#genrateRandom");
-  const element = document.querySelector('.khel-list');
+  const elFilter = document.querySelectorAll("input[name='type']");
   let types = Object.getOwnPropertyNames(data);
+  let arrFilter = [];
 
-  function buildArray(data) {
-    return `<div class="card">
-      <div class="card__khel-name">${data.name}</div>
-      <div class="card__khel-meaning">Meaning: ${data.meaning}</div>
-      <div class="card__khel-aim">Aim: ${data.aim}</div>
-      <div class="card__khel-description">${data.description}</div>
-    </div>`;
+  elRandom.addEventListener('click', function() {
+    getRandom();
+  });
+
+  for(let i=0; i < elFilter.length; i++) {
+    elFilter[i].addEventListener('click', function(e) {
+      if(e.target.checked) {
+        arrFilter.push(e.target.value);
+      }
+      if(!e.target.checked) {
+        if(arrFilter.indexOf(e.target.value) === 0) {
+          arrFilter.shift();
+        } else {
+          arrFilter.splice(arrFilter.indexOf(e.target.value),1);
+        }
+      }
+      getFiltered(arrFilter);
+    });
+  }
+
+  function buildArray(data, arr) {
+    arr.push(
+      `<div class="card">
+        <div class="card__khel-name">
+          <span class="title">${data.name}</span>
+          <span class="icon-info"></span>
+        </div>
+        <div class="card__khel-meaning">
+          <span class="title">Meaning</span>
+          <span class="text">${data.meaning}<span>
+        </div>
+        <div class="card__khel-aim">
+          <span class="title">Aim</span>
+          <span class="text">${data.aim}</span>
+        </div>
+        <div class="card__khel-description">
+        <span class="title">Rules</span>
+        <span class="text">${data.description}</span>
+        </div>
+      </div>`
+    )
+
+    return arr;
   }
 
   function getAll() {
@@ -23,10 +62,8 @@ export default function khel() {
       khelArr.push(
         `<h3>${type}</h3>`
       );
-      data[type].khel.map(khel => {
-        khelArr.push(
-          buildArray(khel)
-        );
+      data[type].khel.map( khel => {
+        buildArray(khel, khelArr)
       });
     });
 
@@ -44,9 +81,7 @@ export default function khel() {
       const khelRandom = generateRandom(data[type].khel,2);
 
       khelRandom.map(khel => {
-        khelArr.push(
-          buildArray(khel)
-        );
+        buildArray(khel, khelArr)
       });
     });
 
@@ -56,15 +91,13 @@ export default function khel() {
   function getFiltered(arrFilter) {
     let khelArr = [];
     types = arrFilter;
+
     types.map(type => {
       khelArr.push(
         `<h3>${type}</h3>`
       );
-
       data[type].khel.map(khel => {
-        khelArr.push(
-          buildArray(khel)
-        );
+        buildArray(khel, khelArr)
       });
     });
 
@@ -72,30 +105,7 @@ export default function khel() {
   }
 
   function displayKhel(items) {
-    element.innerHTML = items.join(' ');
+    elementKL.innerHTML = items.join(' ');
   }
-
-  elRandom.addEventListener('click', function() {
-    getRandom();
-  });
-
-  const elFilter = document.querySelectorAll("input[name='type']");
-  let arrFilter = [];
-  for(let i=0; i < elFilter.length; i++) {
-    elFilter[i].addEventListener('click', function(e) {
-      if(e.target.checked) {
-        arrFilter.push(e.target.value);
-      }
-      if(!e.target.checked) {
-        if(arrFilter.indexOf(e.target.value) === 0) {
-          arrFilter.shift();
-        } else {
-          arrFilter.splice(arrFilter.indexOf(e.target.value),1);
-        }
-      }
-      getFiltered(arrFilter);
-    });
-  }
-
   getAll();
 }

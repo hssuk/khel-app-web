@@ -15,7 +15,7 @@ describe('Return array length', () => {
 
 
 // Generate disticnt random items from an array with given number of items
-describe('Return array length', () => {
+describe('Return distinct array', () => {
   expect.extend({
     toBeDistinct(received) {
       const pass = Array.isArray(received) && new Set(received).size === received.length;
@@ -33,9 +33,8 @@ describe('Return array length', () => {
     }
   });
 
-  const goods = [ 'Pizza' ,'Burger' , 'HotDogs'];
-  const randomArr = [ 'Pizza' ,'Burger' , 'Pizza'];
+  const items = [ 'Pizza' ,'Burger' , 'HotDogs'];
 
-  expect(goods).toBeDistinct(); // Passed
-  expect(randomArr).toBeDistinct(); // Failed
+  expect(items).toBeDistinct();
+
 });

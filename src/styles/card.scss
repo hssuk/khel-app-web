@@ -1,28 +1,75 @@
 .card {
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  display: grid;
+  grid-gap: 12px;
   margin-top: 12px;
   margin-bottom: 12px;
-  border-top: 1px solid grey;
-  border-right: 1px solid grey;
-  border-bottom: 1px solid grey;
-  border-left: 1px solid grey;
-  border-radius: 5px;
+  padding: 12px;
 
-  &__khel {
+  .card__khel {
     &-name {
-      font-weight: 500;
-      padding: 12px;
+      cursor: pointer;
+      display: grid;
+      .title {
+        font-weight: 500;
+        grid-column: 1 / 2;
+        pointer-events: none;
+      }
+      .icon-info {
+        align-self: center;
+        background-image: url('/images/icon-info.svg');
+        background-size: 24px;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        pointer-events: none;
+        grid-column: 2 / 2;
+        justify-self: end;
+      }
     }
 
-    &-meaning {
-      padding: 12px;
-    }
-
-    &-aim {
-      padding: 12px;
-    }
-
+    &-meaning,
+    &-aim,
     &-description {
-      padding: 12px;
+      display: none;
+    }
+  }
+
+  &.more-info {
+    .card__khel {
+      &-meaning,
+      &-aim,
+      &-description {
+        display: grid;
+        .title {
+          grid-column: 1/1;
+        }
+        .text {
+          grid-column: 1/1;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    &.more-info {
+      .card__khel {
+        &-meaning,
+        &-aim,
+        &-description {
+          display: grid;
+          grid-template-columns: 120px auto;
+          .title {
+            grid-column: 1/2;
+          }
+          .text {
+            grid-column: 2/2;
+          }
+        }
+      }
     }
   }
 }
