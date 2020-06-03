@@ -12,24 +12,35 @@
     <h1>Khel List Generator</h1>
   </header>
   <section class="filters">
-    <button id="genrateRandom">Generate random from each category</button>
-    <div id="filter">
-      <label>Pursuit</label>
-      <input type="checkbox" name="type" value="Pursuit">
-      <label>Mandal</label>
-      <input type="checkbox" name="type" value="Mandal">
-      <label>Team</label>
-      <input type="checkbox" name="type" value="Team">
-      <label>Sittging Down</label>
-      <input type="checkbox" name="type" value="Sitting Down">
-      <label>Dand</label>
-      <input type="checkbox" name="type" value="Dand">
+    <button id="genrateRandom" class="btn">Generate random</button>
+    <div class="categories">
+      <div class="categories__title">Filter by category</div>
+      <div class="categories__item">
+        <input id="pursuit" class='categories__input' type="checkbox" name="type" value="Pursuit">
+        <label for="pursuit">Pursuit</label>
+      </div>
+      <div class="categories__item">
+        <input id="mandal" class='categories__input' type="checkbox" name="type" value="Mandal">
+        <label for="mandal">Mandal</label>
+      </div>
+      <div class="categories__item">
+        <input id="team" class='categories__input' type="checkbox" name="type" value="Team">
+        <label for="team">Team</label>
+      </div>
+      <div class="categories__item">
+        <input id="sittingdown" class='categories__input' type="checkbox" name="type" value="Sitting Down">
+        <label for="sittingdown">Sitting Down</label>
+      </div>
+      <div class="categories__item">
+        <input id="dand" class='categories__input' type="checkbox" name="type" value="Dand">
+        <label for="dand">Dand</label>
+      </div>
     </div>
-
-    <div class="khel-list">
-
-    </div>
-
   </section>
+  <section class="content">
+    <div class="khel-list"></div>
+  </section>
+
+
 </body>
 </html>
