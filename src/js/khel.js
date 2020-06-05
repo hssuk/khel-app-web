@@ -6,12 +6,18 @@ export default function khel() {
   const data = require('../data/khel.json');
   const elementKL = document.querySelector('.khel-list');
   const elRandom = document.querySelector("#genrateRandom");
+  const elReset = document.querySelector("#reset");
   const elFilter = document.querySelectorAll(".categories__input");
+  const elWhatsapp = document.querySelector("#whatsapp");
   let types = Object.getOwnPropertyNames(data);
   let arrFilter = [];
 
   elRandom.addEventListener('click', function() {
     getRandom();
+  });
+
+  elReset.addEventListener('click', function() {
+    location.reload();
   });
 
   for(let i=0; i < elFilter.length; i++) {
@@ -30,7 +36,7 @@ export default function khel() {
     });
   }
 
-  function buildArray(data, arr) {
+  function buildHtmlArray(data, arr) {
     arr.push(
       `<div class="card">
         <div class="card__khel-name">
@@ -55,23 +61,37 @@ export default function khel() {
     return arr;
   }
 
+  function buildShareListArray(data, arr) {
+    arr.push(data.name);
+    return arr;
+  }
+
+  function buildShareList(shareArr) {
+    shareArr = shareArr.join('%0A');
+    elWhatsapp.href = `whatsapp://send?text=*Khel%20List*%0A${shareArr}`;
+  }
+
   function getAll() {
     let khelArr = [];
+    let shareArr = [];
 
     types.map(type => {
       khelArr.push(
         `<h3 class='category-title'>${type}</h3>`
       );
       data[type].khel.map( khel => {
-        buildArray(khel, khelArr)
+        buildHtmlArray(khel, khelArr);
+        buildShareListArray(khel, shareArr);
       });
     });
 
     displayKhel(khelArr);
+    buildShareList(shareArr);
   }
 
   function getRandom() {
     let khelArr = [];
+    let shareArr = [];
 
     types.map(type => {
       khelArr.push(
@@ -81,15 +101,18 @@ export default function khel() {
       const khelRandom = generateRandom(data[type].khel,2);
 
       khelRandom.map(khel => {
-        buildArray(khel, khelArr)
+        buildHtmlArray(khel, khelArr);
+        buildShareListArray(khel, shareArr);
       });
     });
 
     displayKhel(khelArr);
+    buildShareList(shareArr);
   }
 
   function getFiltered(arrFilter) {
     let khelArr = [];
+    let shareArr = [];
     types = arrFilter;
 
     types.map(type => {
@@ -97,11 +120,13 @@ export default function khel() {
         `<h3 class='category-title'>${type}</h3>`
       );
       data[type].khel.map(khel => {
-        buildArray(khel, khelArr)
+        buildHtmlArray(khel, khelArr);
+        buildShareListArray(khel, shareArr);
       });
     });
 
     displayKhel(khelArr);
+    buildShareList(shareArr);
   }
 
   function displayKhel(items) {

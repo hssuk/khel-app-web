@@ -5,6 +5,7 @@
 
   .btn {
     width: fit-content;
+    margin: 8px;
   }
 
   .categories {
@@ -19,6 +20,7 @@
     }
     &__item {
       margin-bottom: 12px;
+      font-size: 22px;
     }
     &__input {
       margin-left: 16px;
