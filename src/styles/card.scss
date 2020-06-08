@@ -3,8 +3,8 @@
   border-radius: 5px;
   display: grid;
   grid-gap: 12px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
   padding: 12px;
 
   .card__khel {

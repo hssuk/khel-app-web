@@ -33,7 +33,7 @@ describe('Return distinct array', () => {
     }
   });
 
-  const items = [ 'Pizza' ,'Burger' , 'HotDogs'];
+  const items = [ 'item1' ,'item2' , 'item3'];
 
   expect(items).toBeDistinct();
 

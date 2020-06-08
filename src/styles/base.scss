@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 19px;
+  font-size: var(--font-size-1);
   font-weight: 400;
   line-height: 1.5em;
   color: var(--grey-2);
@@ -12,7 +12,7 @@ body {
   border-radius: 20px;
   color: #fff;
   cursor: pointer;
-  font-size: 18px;
+  font-size: var(--font-size-1);
   line-height: 1.5;
   padding: 6px 18px;
   transition: background-color .15s ease-in-out;
@@ -61,13 +61,13 @@ input[type="checkbox"] {
 .category-title {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 16px;
-  margin-top: 32px;
+  margin-bottom: var(--spacing-4);
+  margin-top: var(--spacing-4);
   &:before {
     content: " ";
     width: 5px;
     height: 32px;
     background-color: var(--blue-1);
-    margin-right: 8px;
+    margin-right: var(--spacing-2);
   }
 }

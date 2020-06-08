@@ -1,24 +1,15 @@
 import generateRandom from './generateRandom.js';
 import 'regenerator-runtime/runtime';
-import toggleClass from './toggleClass.js';
+import { setShareList, getShareList } from './share.js';
+import setHtmlArray from './setHtmlArray.js';
+import displayItems from './displayItems.js';
 
 export default function khel() {
   const data = require('../data/khel.json');
-  const elementKL = document.querySelector('.khel-list');
   const elRandom = document.querySelector("#genrateRandom");
-  const elReset = document.querySelector("#reset");
   const elFilter = document.querySelectorAll(".categories__input");
-  const elWhatsapp = document.querySelector("#whatsapp");
   let types = Object.getOwnPropertyNames(data);
   let arrFilter = [];
-
-  elRandom.addEventListener('click', function() {
-    getRandom();
-  });
-
-  elReset.addEventListener('click', function() {
-    location.reload();
-  });
 
   for(let i=0; i < elFilter.length; i++) {
     elFilter[i].addEventListener('click', function(e) {
@@ -36,40 +27,9 @@ export default function khel() {
     });
   }
 
-  function buildHtmlArray(data, arr) {
-    arr.push(
-      `<div class="card">
-        <div class="card__khel-name">
-          <span class="title">${data.name}</span>
-          <span class="icon-info"></span>
-        </div>
-        <div class="card__khel-meaning">
-          <span class="title">Meaning</span>
-          <span class="text">${data.meaning}<span>
-        </div>
-        <div class="card__khel-aim">
-          <span class="title">Aim</span>
-          <span class="text">${data.aim}</span>
-        </div>
-        <div class="card__khel-description">
-          <span class="title">Rules</span>
-          <span class="text">${data.description}</span>
-        </div>
-      </div>`
-    )
-
-    return arr;
-  }
-
-  function buildShareListArray(data, arr) {
-    arr.push(data.name);
-    return arr;
-  }
-
-  function buildShareList(shareArr) {
-    shareArr = shareArr.join('%0A');
-    elWhatsapp.href = `whatsapp://send?text=*Khel%20List*%0A${shareArr}`;
-  }
+  elRandom.addEventListener('click', function() {
+    getRandom();
+  });
 
   function getAll() {
     let khelArr = [];
@@ -80,13 +40,13 @@ export default function khel() {
         `<h3 class='category-title'>${type}</h3>`
       );
       data[type].khel.map( khel => {
-        buildHtmlArray(khel, khelArr);
-        buildShareListArray(khel, shareArr);
+        setHtmlArray(khel, khelArr);
+        setShareList(khel, shareArr);
       });
     });
 
-    displayKhel(khelArr);
-    buildShareList(shareArr);
+    displayItems(khelArr);
+    getShareList(shareArr);
   }
 
   function getRandom() {
@@ -101,13 +61,13 @@ export default function khel() {
       const khelRandom = generateRandom(data[type].khel,2);
 
       khelRandom.map(khel => {
-        buildHtmlArray(khel, khelArr);
-        buildShareListArray(khel, shareArr);
+        setHtmlArray(khel, khelArr);
+        setShareList(khel, shareArr);
       });
     });
 
-    displayKhel(khelArr);
-    buildShareList(shareArr);
+    displayItems(khelArr);
+    getShareList(shareArr);
   }
 
   function getFiltered(arrFilter) {
@@ -120,19 +80,15 @@ export default function khel() {
         `<h3 class='category-title'>${type}</h3>`
       );
       data[type].khel.map(khel => {
-        buildHtmlArray(khel, khelArr);
-        buildShareListArray(khel, shareArr);
+        setHtmlArray(khel, khelArr);
+        setShareList(khel, shareArr);
       });
     });
 
-    displayKhel(khelArr);
-    buildShareList(shareArr);
-  }
-
-  function displayKhel(items) {
-    elementKL.innerHTML = items.join(' ');
-    toggleClass();
+    displayItems(khelArr);
+    getShareList(shareArr);
   }
 
   getAll();
+
 }

@@ -3,7 +3,6 @@ export default function toggleClass() {
 
   for(let i=0; i < elementCard.length; i++) {
     elementCard[i].addEventListener('click', function(e) {
-      console.log(e.target)
       e.target.parentElement.classList.toggle("more-info");
     });
   }
