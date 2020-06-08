@@ -5,53 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khel</title>
   <!--link rel="stylesheet" href="./styles/style.scss"-->
-  <script defer src="./js/app.js"></script>
+  <script defer src="/js/app.js"></script>
 </head>
 <body>
   <header>
     <h1>Khel List Generator</h1>
   </header>
-  <section class="filters">
-    <div class="categories">
-      <div class="categories__title">Filter by category</div>
-      <div class="categories__item">
-        <input id="pursuit" class='categories__input' type="checkbox" name="type" value="Pursuit">
-        <label for="pursuit">Pursuit</label>
-      </div>
-      <div class="categories__item">
-        <input id="mandal" class='categories__input' type="checkbox" name="type" value="Mandal">
-        <label for="mandal">Mandal</label>
-      </div>
-      <div class="categories__item">
-        <input id="team" class='categories__input' type="checkbox" name="type" value="Team">
-        <label for="team">Team</label>
-      </div>
-      <div class="categories__item">
-        <input id="sittingdown" class='categories__input' type="checkbox" name="type" value="Sitting Down">
-        <label for="sittingdown">Sitting Down</label>
-      </div>
-      <div class="categories__item">
-        <input id="dand" class='categories__input' type="checkbox" name="type" value="Dand">
-        <label for="dand">Dand</label>
-      </div>
-    </div>
-    <div class="buttons">
-      <button id="genrateRandom" class="btn">Generate random</button>
-      <button id="reset" class="btn">Reset</button>
-    </div>
-  </section>
-
-  <section class="share">
-    <span class="text">Share</span>
-    <a id="whatsapp" href="">
-      <img src='/images/icon-whatsapp.png'>
-    </a>
-  </section>
 
   <section class="content">
     <div class="khel-list"></div>
   </section>
 
-
+  <section class="actions">
+    <div class="filters">
+      <div class="categories">
+        <div class="categories__title">Filter by category</div>
+        <div class="categories__item">
+          <input id="pursuit" class='categories__input' type="checkbox" name="type" value="Pursuit">
+          <label for="pursuit">Pursuit</label>
+        </div>
+        <div class="categories__item">
+          <input id="mandal" class='categories__input' type="checkbox" name="type" value="Mandal">
+          <label for="mandal">Mandal</label>
+        </div>
+        <div class="categories__item">
+          <input id="team" class='categories__input' type="checkbox" name="type" value="Team">
+          <label for="team">Team</label>
+        </div>
+        <div class="categories__item">
+          <input id="sittingdown" class='categories__input' type="checkbox" name="type" value="Sitting Down">
+          <label for="sittingdown">Sitting Down</label>
+        </div>
+        <div class="categories__item">
+          <input id="dand" class='categories__input' type="checkbox" name="type" value="Dand">
+          <label for="dand">Dand</label>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="genrateRandom" class="btn">Random</button>
+        <button id="reset" class="btn">Reset</button>
+        <div class="share">
+          <span class="text">Share</span>
+          <a id="whatsapp" href="">
+            <img src='/images/icon-whatsapp.png'>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
