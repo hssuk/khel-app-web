@@ -1,3 +1,11 @@
+/*
+  Set and display khel
+  Set event listeners
+  Methods:
+    Generate random list
+    Filter by category e.g. individual, team, sitting down etc.
+*/
+
 import generateRandom from './generateRandom.js';
 import 'regenerator-runtime/runtime';
 import { setShareList, getShareList } from './share.js';

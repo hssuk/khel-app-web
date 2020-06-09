@@ -1,3 +1,7 @@
+/*
+  Function to set the html and content of each item card
+*/
+
 export default function setHtmlArray(data, arr) {
   arr.push(
     `<div class="card">

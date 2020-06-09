@@ -1,3 +1,9 @@
+/*
+  Function to generate a random item list
+  Returned list will be a unique set (no duplicate items)
+  @param n is the number of unique items to return
+*/
+
 function generateRandom(arr, n) {
   let result = new Array(n);
   let len = arr.length;

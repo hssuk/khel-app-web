@@ -1,3 +1,6 @@
+/*
+  Set and populate sharing
+*/
 
 function setShareList(data, arr) {
   arr.push(data.name);
