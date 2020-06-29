@@ -8,8 +8,8 @@
 
 import generateRandom from './generateRandom.js';
 import 'regenerator-runtime/runtime';
-import { setShareList, getShareList } from './share.js';
 import setHtmlArray from './setHtmlArray.js';
+import { setShareList, getShareList } from './share.js';
 import displayItems from './displayItems.js';
 
 export default function khel() {
@@ -17,6 +17,8 @@ export default function khel() {
   const elRandom = document.querySelector("#genrateRandom");
   const elFilter = document.querySelectorAll(".categories__input");
   let types = Object.getOwnPropertyNames(data);
+  let khelArr = [];
+  let shareArr = [];
   let arrFilter = [];
 
   for(let i=0; i < elFilter.length; i++) {
@@ -40,9 +42,6 @@ export default function khel() {
   });
 
   function getAll() {
-    let khelArr = [];
-    let shareArr = [];
-
     types.map(type => {
       khelArr.push(
         `<h3 class='category-title'>${type}</h3>`
@@ -53,13 +52,13 @@ export default function khel() {
       });
     });
 
-    displayItems(khelArr);
     getShareList(shareArr);
+    displayItems(khelArr);
   }
 
   function getRandom() {
-    let khelArr = [];
-    let shareArr = [];
+    khelArr = [];
+    shareArr = [];
 
     types.map(type => {
       khelArr.push(
@@ -79,22 +78,27 @@ export default function khel() {
   }
 
   function getFiltered(arrFilter) {
-    let khelArr = [];
-    let shareArr = [];
-    types = arrFilter;
+    khelArr = [];
+    shareArr = [];
 
-    types.map(type => {
-      khelArr.push(
-        `<h3 class='category-title'>${type}</h3>`
-      );
-      data[type].khel.map(khel => {
-        setHtmlArray(khel, khelArr);
-        setShareList(khel, shareArr);
+    if(arrFilter.length > 0) {
+      types = arrFilter;
+
+      types.map(type => {
+        khelArr.push(
+          `<h3 class='category-title'>${type}</h3>`
+        );
+        data[type].khel.map(khel => {
+          setHtmlArray(khel, khelArr);
+          setShareList(khel, shareArr);
+        });
       });
-    });
 
-    displayItems(khelArr);
-    getShareList(shareArr);
+      displayItems(khelArr);
+      getShareList(shareArr);
+    } else {
+      location.reload();
+    }
   }
 
   getAll();
