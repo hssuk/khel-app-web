@@ -19,21 +19,21 @@ export default function khel() {
   let types = Object.getOwnPropertyNames(data);
   let khelArr = [];
   let shareArr = [];
-  let arrFilter = [];
+  let filterArr = [];
 
   for(let i=0; i < elFilter.length; i++) {
     elFilter[i].addEventListener('click', function(e) {
       if(e.target.checked) {
-        arrFilter.push(e.target.value);
+        filterArr.push(e.target.value);
       }
       if(!e.target.checked) {
-        if(arrFilter.indexOf(e.target.value) === 0) {
-          arrFilter.shift();
+        if(filterArr.indexOf(e.target.value) === 0) {
+          filterArr.shift();
         } else {
-          arrFilter.splice(arrFilter.indexOf(e.target.value),1);
+          filterArr.splice(filterArr.indexOf(e.target.value),1);
         }
       }
-      getFiltered(arrFilter);
+      getFiltered(filterArr);
     });
   }
 
@@ -77,12 +77,12 @@ export default function khel() {
     getShareList(shareArr);
   }
 
-  function getFiltered(arrFilter) {
+  function getFiltered(filterArr) {
     khelArr = [];
     shareArr = [];
 
-    if(arrFilter.length > 0) {
-      types = arrFilter;
+    if(filterArr.length > 0) {
+      types = filterArr;
 
       types.map(type => {
         khelArr.push(
